@@ -1,0 +1,34 @@
+<h1>
+   Sign Up As A New User
+</h1>
+
+<% if @user.errors.any? %>
+  <h2>
+     The following errors prevented the article from getting created. 
+  </h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+     <li> <%= msg %>  </li>
+    <% end %> 
+  </ul>
+<% end %> 
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username, placeholder: "Enter Username" %>
+  </p>
+  <p>
+    <%= f.label :email %> <br/>
+    <%= f.email_field :email, placeholder: "Enter your email" %>
+  </p>
+  <p>
+    <%= f.label :password %> <br/>
+    <%= f.password_field :password, placeholder: "Enter your password" %>
+  </p>
+  <p>
+     <%= f.submit "Sign Up" %>
+  </p>
+<% end %>
+
+<%= link_to "Back to Article", articles_path %>
